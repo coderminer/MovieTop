@@ -11,8 +11,8 @@ from items import DoubanMovieItem
 class DoubanMoviePipeline(object):
     def __init__(self):
         client = pymongo.MongoClient('localhost',27017)
-        db = client['Movie']
-        self.DoubanMovieItem = db['MovieInfo']
+        db = client['Crawl']
+        self.DoubanMovieItem = db['Movie']
 
     def process_item(self, item, spider):
         if isinstance(item,DoubanMovieItem):
