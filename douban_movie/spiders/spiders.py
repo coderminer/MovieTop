@@ -15,14 +15,7 @@ class Spiders(CrawlSpider):
         "https://movie.douban.com/top250/"
     ]
 
-
-
-    #def start_requests(self):
-        #url = "https://movie.douban.com/top250"
-        #yield Request(url=url, callback=self.parse0)
-
     def parse(self,response):
-
         selector = Selector(response)
         ol_li = selector.xpath('//div[@class="item"]')
 
@@ -38,11 +31,6 @@ class Spiders(CrawlSpider):
             yield movie
 
         next_page = response.xpath('//span[@class="next"]/a/@href')
-        logger.info("-------------------url %s ",response.url)
         if next_page:
-            #logger.info('==============next %s ',next_page)
-            #logger.info('=============page %s ',next_page[0].extract())
-            #url = response.url.join(next_page[0].extract())
             url = 'https://movie.douban.com/top250'+next_page[0].extract()
-            logger.info('=================url %s ',url)
             yield Request(url=url,callback=self.parse)

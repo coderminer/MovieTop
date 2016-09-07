@@ -8,3 +8,5 @@
   > Python 2.7  
   > Scrapy  
   > pymongo  
+
+配置完环境之后，可以直接运行 run.py
